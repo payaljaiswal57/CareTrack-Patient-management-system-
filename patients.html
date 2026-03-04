@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Patients</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<h2>CareTrack</h2>
+<div class="nav-links" id="navLinks">
+<a href="index.html" onclick="toggleMenu()">Dashboard</a>
+<a href="patients.html" onclick="toggleMenu()">Patients</a>
+<a href="search.html" onclick="toggleMenu()">Search</a>
+<a href="#" id="darkBtn" onclick="toggleDark()">Switch to Dark Mode</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>Add Patient</h3>
+<input type="number" id="id" placeholder="ID">
+<input type="text" id="name" placeholder="Name">
+<input type="number" id="age" placeholder="Age">
+<input type="text" id="disease" placeholder="Disease">
+<br><br>
+<button onclick="addPatient()">Add</button>
+</div>
+
+<div class="card">
+<h3>All Patients</h3>
+<table>
+<tr>
+<th>ID</th><th>Name</th><th>Age</th><th>Disease</th>
+</tr>
+<tbody id="table"></tbody>
+</table>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function addPatient(){
+let id=id=document.getElementById("id").value;
+let name=document.getElementById("name").value;
+let age=document.getElementById("age").value;
+let disease=document.getElementById("disease").value;
+
+patients.push({id,name,age,disease});
+saveData();
+showPatients();
+}
+
+function showPatients(){
+let table=document.getElementById("table");
+table.innerHTML="";
+patients.forEach(p=>{
+table.innerHTML+=`<tr>
+<td>${p.id}</td>
+<td>${p.name}</td>
+<td>${p.age}</td>
+<td>${p.disease}</td>
+</tr>`;
+});
+}
+
+showPatients();
+</script>
+
+</body>
+  </html>
