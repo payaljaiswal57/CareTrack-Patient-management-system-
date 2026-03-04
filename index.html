@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<h2>CareTrack</h2>
+
+<div class="nav-links" id="navLinks">
+<a href="index.html" onclick="toggleMenu()">Dashboard</a>
+<a href="patients.html" onclick="toggleMenu()">Patients</a>
+<a href="search.html" onclick="toggleMenu()">Search</a>
+<a href="#" id="darkBtn" onclick="toggleDark()">Switch to Dark Mode</a>
+</div>
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="container">
+<div class="card">
+<h3>Dashboard Summary</h3>
+<p>Total Patients: <span id="total"></span></p>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+document.getElementById("total").innerText = patients.length;
+</script>
+
+</body>
+  </html>
