@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+<h2>CareTrack</h2>
+<div class="nav-links" id="navLinks">
+<a href="index.html" onclick="toggleMenu()">Dashboard</a>
+<a href="patients.html" onclick="toggleMenu()">Patients</a>
+<a href="search.html" onclick="toggleMenu()">Search</a>
+<a href="#" id="darkBtn" onclick="toggleDark()">Switch to Dark Mode</a>
+</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h3>Search Patient by Name</h3>
+<input type="text" id="searchName" placeholder="Enter Name">
+<button onclick="searchPatient()">Search</button>
+
+<div id="result"></div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function searchPatient(){
+let name=document.getElementById("searchName").value.toLowerCase();
+let resultBox=document.getElementById("result");
+
+let found=patients.filter(p=>p.name.toLowerCase().includes(name));
+
+if(found.length>0){
+resultBox.innerHTML="";
+found.forEach(p=>{
+resultBox.innerHTML+=`
+<div class="result-box success">
+ID: ${p.id} <br>
+Name: ${p.name} <br>
+Age: ${p.age} <br>
+Disease: ${p.disease}
+</div>`;
+});
+}
+else{
+resultBox.innerHTML=`
+<div class="result-box error">
+Patient Not Found
+</div>`;
+}
+}
+</script>
+
+</body>
+</html>
